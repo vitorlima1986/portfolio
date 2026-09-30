@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitor Lima da Silva | Senior QA Engineer & SDET</title>
+  <meta name="description" content="Portfólio profissional de Vitor Lima da Silva - Senior QA Engineer especializado em testes automatizados, mensageria e sistemas críticos." />
+  
+  <!-- Fontes Google: Space Grotesk + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            qa: {
+              bg: '#090d16',
+              surface: '#0f172a',
+              card: '#141f36',
+              border: '#1e293b',
+              accent: '#38bdf8',
+              accentHover: '#0ea5e9',
+              pass: '#10b981',
+              warn: '#f59e0b',
+              fail: '#ef4444'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Estilos Customizados & Efeitos */
+    .bg-grid-pattern {
+      background-size: 36px 36px;
+      background-image: 
+        linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+    }
+    .light .bg-grid-pattern {
+      background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 30px -8px rgba(56, 189, 248, 0.35);
+    }
+    .badge-terminal {
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+
+<body class="bg-qa-bg text-slate-200 font-sans selection:bg-cyan-500/20 selection:text-cyan-300 transition-colors duration-300 min-h-screen">
+  
+  <!-- Fundo com grid sutil -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+
+  <!-- Header / Barra de Navegação Flutuante -->
+  <header class="fixed top-4 inset-x-0 mx-auto max-w-5xl z-50 px-4">
+    <nav class="flex items-center justify-between px-5 py-3 rounded-2xl bg-qa-surface/85 backdrop-blur-md border border-slate-800 shadow-xl shadow-black/40">
+      
+      <!-- Logo / Identidade -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-mono font-bold text-sm shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+          VL
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-sm text-slate-100 group-hover:text-cyan-400 transition-colors">Vitor Lima</span>
+          <span class="text-[11px] font-mono text-cyan-400/80">Senior QA Engineer</span>
+        </div>
+      </a>
+
+      <!-- Links de Navegação -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-cyan-400 transition-colors">Sobre</a>
+        <a href="#skills" class="hover:text-cyan-400 transition-colors">Competências</a>
+        <a href="#pipeline" class="hover:text-cyan-400 transition-colors">QA Console</a>
+        <a href="#experience" class="hover:text-cyan-400 transition-colors">Trajetória</a>
+        <a href="#projects" class="hover:text-cyan-400 transition-colors">Projetos</a>
+        <a href="#contact" class="hover:text-cyan-400 transition-colors">Contato</a>
+      </div>
+
+      <!-- Ações: Tema e Contato Rápido -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold hover:bg-cyan-500/20 transition-all">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          Fale Comigo
+        </a>
+        <button id="themeToggle" class="p-2 rounded-xl text-slate-400 hover:text-white bg-slate-800/60 border border-slate-700 hover:border-slate-600 transition-colors" title="Alternar Modo">
+          <i data-lucide="sun" id="sunIcon" class="w-4 h-4 hidden"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="relative z-10 pt-28 pb-20 px-4 max-w-5xl mx-auto space-y-28">
+
+    <!-- SEÇÃO HERO -->
+    <section id="hero" class="pt-8 md:pt-14 space-y-8">
+      
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 shadow-inner">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+        </span>
+        <span class="text-xs font-mono text-slate-300 font-medium">Disponível para Projetos & Desafios Sênior</span>
+      </div>
+
+      <!-- Título Principal & Proposta de Valor -->
+      <div class="space-y-4 max-w-3xl">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+          Garantindo a <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500">resiliência e qualidade</span> de sistemas corporativos críticos.
+        </h1>
+        <p class="text-base sm:text-lg text-slate-400 leading-relaxed">
+          Olá! Sou <strong class="text-slate-200">Vitor Lima da Silva</strong>, Engenheiro de Qualidade de Software (QA / SDET) com mais de 8 anos de experiência em automação de testes ponta a ponta, validação de microsserviços, mensageria assíncrona e esteiras de CI/CD para os setores bancário e de saúde.
+        </p>
+      </div>
+
+      <!-- Métricas / Badges Rápidos -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2">
+        <div class="p-3.5 rounded-xl bg-qa-surface/60 border border-slate-800 backdrop-blur-sm">
+          <span class="block text-2xl font-bold font-mono text-cyan-400">+8 Anos</span>
+          <span class="text-xs text-slate-400">Atuação em QA & TI</span>
+        </div>
+        <div class="p-3.5 rounded-xl bg-qa-surface/60 border border-slate-800 backdrop-blur-sm">
+          <span class="block text-2xl font-bold font-mono text-emerald-400">Shift-Left</span>
+          <span class="text-xs text-slate-400">BDD, TDD & Ágil</span>
+        </div>
+        <div class="p-3.5 rounded-xl bg-qa-surface/60 border border-slate-800 backdrop-blur-sm">
+          <span class="block text-2xl font-bold font-mono text-sky-400">Banking</span>
+          <span class="text-xs text-slate-400">BNB & Saúde Unimed</span>
+        </div>
+        <div class="p-3.5 rounded-xl bg-qa-surface/60 border border-slate-800 backdrop-blur-sm">
+          <span class="block text-2xl font-bold font-mono text-indigo-400">CI/CD</span>
+          <span class="text-xs text-slate-400">Azure DevOps & Batch</span>
+        </div>
+      </div>
+
+      <!-- Botões de Ação -->
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a href="#pipeline" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-sm shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 transition-all">
+          <i data-lucide="play" class="w-4 h-4 fill-white"></i>
+          Testar Console de QA
+        </a>
+        <a href="https://linkedin.com/in/vitor-lima-935854131" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-medium text-sm transition-all">
+          <i data-lucide="linkedin" class="w-4 h-4 text-cyan-400"></i>
+          LinkedIn Perfil
+        </a>
+        <a href="mailto:vtrlslv@icloud.com" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800/60 hover:bg-slate-700/60 border border-slate-700 text-slate-300 font-medium text-sm transition-all">
+          <i data-lucide="mail" class="w-4 h-4 text-slate-400"></i>
+          vtrlslv@icloud.com
+        </a>
+      </div>
+    </section>
+
+    <!-- SEÇÃO QA CONSOLE / SIMULADOR INTERATIVO -->
+    <section id="pipeline" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-wider uppercase mb-1">
+            <i data-lucide="terminal" class="w-4 h-4"></i> Simulador Interativo
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white">Live Quality Assurance Console</h2>
+          <p class="text-sm text-slate-400">Veja na prática como estruturo pipelines contínuas e validações transacionais.</p>
+        </div>
+        <button id="runTestsBtn" onclick="runQASimulation()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs font-mono uppercase tracking-wider transition-all shadow-md shadow-cyan-500/20 active:scale-95">
+          <i data-lucide="refresh-cw" id="runIcon" class="w-3.5 h-3.5"></i>
+          Executar Suíte de Testes
+        </button>
+      </div>
+
+      <!-- Janela do Terminal / Console -->
+      <div class="rounded-2xl border border-slate-800 bg-[#070b13] shadow-2xl overflow-hidden font-mono text-xs">
+        <!-- Top bar do terminal -->
+        <div class="flex items-center justify-between px-4 py-2.5 bg-slate-900/90 border-b border-slate-800/80">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+            <span class="ml-2 text-slate-400 font-sans text-xs">azure-pipelines.yml — vitor-qa-runner</span>
+          </div>
+          <div class="text-slate-500 text-[11px] flex items-center gap-2">
+            <span id="terminalStatus" class="text-emerald-400">● 4/4 PASSING</span>
+            <span>| 184ms</span>
+          </div>
+        </div>
+
+        <!-- Linhas de Execução do Console -->
+        <div id="terminalBody" class="p-5 space-y-3.5 text-slate-300">
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold">✔</span>
+            <div class="flex-1">
+              <span class="text-slate-100 font-bold">[Cypress E2E]</span> Validação de jornada de autenticação e transações Web
+              <span class="text-slate-500 float-right text-[11px]">42ms</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold">✔</span>
+            <div class="flex-1">
+              <span class="text-slate-100 font-bold">[Rest-Assured & Postman]</span> Contratos RESTful, Payload Schema e HTTP Status 200/201
+              <span class="text-slate-500 float-right text-[11px]">31ms</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold">✔</span>
+            <div class="flex-1">
+              <span class="text-slate-100 font-bold">[IBM MQ]</span> Enfileiramento, persistência de mensagens assíncronas e payload XML/JSON
+              <span class="text-slate-500 float-right text-[11px]">54ms</span>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold">✔</span>
+            <div class="flex-1">
+              <span class="text-slate-100 font-bold">[DB2 & SQL Server]</span> Integridade de dados de faturamento, conciliação e procedures
+              <span class="text-slate-500 float-right text-[11px]">57ms</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer do Terminal -->
+        <div class="px-5 py-2.5 bg-slate-900/40 border-t border-slate-800 text-[11px] text-slate-500 flex justify-between items-center">
+          <span>Ambiente: <strong class="text-slate-400">WebSphere / Control-M / Azure DevOps</strong></span>
+          <span class="text-cyan-400/90 font-medium">Shift-Left Testing Enforced</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO COMPETÊNCIAS TÉCNICAS E STACK -->
+    <section id="skills" class="space-y-8">
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-wider uppercase">
+          <i data-lucide="layers" class="w-4 h-4"></i> Arsenal Tecnológico
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Competências Técnicas & Ferramentas</h2>
+        <p class="text-sm text-slate-400 max-w-2xl">Dominando ferramentas de ponta a ponta: do comportamento (BDD) à camada de banco de dados e mensageria distribuída.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        
+        <!-- Bloco 1: Automação E2E & Web -->
+        <div class="p-6 rounded-2xl bg-qa-surface/80 border border-slate-800 hover:border-slate-700 transition-all space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+              <i data-lucide="check-circle" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-100">Automação de Testes & Frameworks</h3>
+              <p class="text-xs text-slate-400">Execução E2E, Regressão e Shift-Left</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-cyan-300">Cypress</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-cyan-300">Selenium WebDriver</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-cyan-300">Rest-Assured</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-cyan-300">Robot Framework</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-cyan-300">Cucumber (BDD)</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-cyan-300">Playwright</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-cyan-300">PyTest</span>
+          </div>
+        </div>
+
+        <!-- Bloco 2: APIs, Mensageria & Integração -->
+        <div class="p-6 rounded-2xl bg-qa-surface/80 border border-slate-800 hover:border-slate-700 transition-all space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+              <i data-lucide="radio" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-100">APIs, Mensageria & Microsserviços</h3>
+              <p class="text-xs text-slate-400">Integração assíncrona e protocolos corporativos</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-blue-300">IBM MQ (Message Queues)</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-blue-300">Postman / Insomnia</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-blue-300">IBM WebSphere</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-blue-300">SoapUI (SOAP/WSDL)</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-blue-300">SFTP / FileZilla</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-blue-300">Swagger / OpenAPI</span>
+          </div>
+        </div>
+
+        <!-- Bloco 3: Banco de Dados & Massas de Dados -->
+        <div class="p-6 rounded-2xl bg-qa-surface/80 border border-slate-800 hover:border-slate-700 transition-all space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <i data-lucide="database" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-100">Bancos de Dados & Auditoria SQL</h3>
+              <p class="text-xs text-slate-400">Conferência de regras e massas transacionais</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-emerald-300">IBM DB2</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-emerald-300">Microsoft SQL Server</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-emerald-300">PostgreSQL</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-emerald-300">DBeaver</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-emerald-300">SQL Avançado (Joins, Stored Procedures)</span>
+          </div>
+        </div>
+
+        <!-- Bloco 4: DevOps & Batch Jobs -->
+        <div class="p-6 rounded-2xl bg-qa-surface/80 border border-slate-800 hover:border-slate-700 transition-all space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+              <i data-lucide="git-merge" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-100">DevOps, Batch & Observabilidade</h3>
+              <p class="text-xs text-slate-400">Pipelines CI/CD e orquestração de processamento</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-purple-300">Azure DevOps Pipelines</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-purple-300">Control-M (Batch Jobs)</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-purple-300">Datadog (Logs & APM)</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-purple-300">Jira / Confluence / RTC</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-purple-300">Git / GitHub / GitLab</span>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-xs font-mono text-purple-300">JMeter (Performance)</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO TRAJETÓRIA PROFISSIONAL -->
+    <section id="experience" class="space-y-8">
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-wider uppercase">
+          <i data-lucide="briefcase" class="w-4 h-4"></i> Carreira & Experiência
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Trajetória Profissional</h2>
+        <p class="text-sm text-slate-400">Atuação consolidada em grandes ecossistemas corporativos.</p>
+      </div>
+
+      <div class="space-y-6 relative border-l-2 border-slate-800 pl-6 ml-3">
+        
+        <!-- Experiência 1: Banco do Nordeste -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-cyan-400 ring-4 ring-qa-bg group-hover:scale-125 transition-transform"></div>
+          <div class="p-6 rounded-2xl bg-qa-surface/90 border border-slate-800 space-y-3 hover:border-cyan-500/40 transition-all">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <h3 class="text-lg font-bold text-white">Banco do Nordeste do Brasil (BNB)</h3>
+              <span class="text-xs font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded-md border border-cyan-800/50 w-fit">01/2024 - Atual</span>
+            </div>
+            <p class="text-sm font-semibold text-slate-300">Senior QA Engineer / Analista de Testes Pleno-Sênior</p>
+            <ul class="text-xs sm:text-sm text-slate-400 space-y-2 list-disc list-inside leading-relaxed">
+              <li>Garantia da qualidade e homologação de sistemas bancários transacionais e serviços corporativos de alta criticidade.</li>
+              <li>Automação e testes de serviços/microsserviços integrados utilizando Postman, Insomnia, Rest-Assured e SoapUI.</li>
+              <li>Validação e monitoramento de tráfego de mensageria assíncrona entre sistemas via <strong>IBM MQ</strong>.</li>
+              <li>Acompanhamento, homologação e disparo de rotinas e processamentos em lote (batch jobs) via <strong>Control-M</strong>.</li>
+              <li>Auditoria e validação de regras de negócio financeiras diretamente nos bancos <strong>IBM DB2</strong> e <strong>SQL Server</strong> com consultas avançadas.</li>
+              <li>Automação de testes funcionais e regressivos com Cypress e Selenium integrados em pipelines de CI/CD no Azure DevOps.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experiência 2: Unimed Fortaleza -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-600 ring-4 ring-qa-bg group-hover:bg-cyan-400 transition-colors"></div>
+          <div class="p-6 rounded-2xl bg-qa-surface/90 border border-slate-800 space-y-3 hover:border-slate-700 transition-all">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <h3 class="text-lg font-bold text-white">Unimed Fortaleza</h3>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700 w-fit">12/2021 - 12/2023</span>
+            </div>
+            <p class="text-sm font-semibold text-slate-300">Analista de Qualidade e Testes de Software</p>
+            <ul class="text-xs sm:text-sm text-slate-400 space-y-2 list-disc list-inside leading-relaxed">
+              <li>Implementação de suítes de automação com Cypress para aplicações Web e validação de APIs REST com Postman e Rest-Assured.</li>
+              <li>Validação de fluxos de faturamento, operadora e autorizações médicas com conferência de integridade em banco relacional.</li>
+              <li>Modelagem de cenários de teste orientados ao comportamento (BDD com Cucumber/Gherkin) como documentação viva.</li>
+              <li>Participação ativa nas cerimônias ágeis (Scrum/Kanban), refinamento de critérios e reporte estruturado no Jira.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experiência 3: Telemont -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-600 ring-4 ring-qa-bg group-hover:bg-cyan-400 transition-colors"></div>
+          <div class="p-6 rounded-2xl bg-qa-surface/90 border border-slate-800 space-y-3 hover:border-slate-700 transition-all">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <h3 class="text-lg font-bold text-white">Telemont Engenharia de Telecomunicações</h3>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700 w-fit">09/2019 - 11/2021</span>
+            </div>
+            <p class="text-sm font-semibold text-slate-300">Analista de Testes Pleno</p>
+            <ul class="text-xs sm:text-sm text-slate-400 space-y-2 list-disc list-inside leading-relaxed">
+              <li>Modelagem e execução de testes de integração de APIs SOAP e REST com SoapUI e Postman para telecomunicações.</li>
+              <li>Execução de testes regressivos, funcionais e testes de carga/performance com JMeter.</li>
+              <li>Acompanhamento do ciclo de vida de defeitos de ponta a ponta no Jira.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experiência 4: Via / Telemont -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-slate-600 ring-4 ring-qa-bg group-hover:bg-cyan-400 transition-colors"></div>
+          <div class="p-6 rounded-2xl bg-qa-surface/90 border border-slate-800 space-y-3 hover:border-slate-700 transition-all">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <h3 class="text-lg font-bold text-white">Via (Via Varejo) / Telemont</h3>
+              <span class="text-xs font-mono text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-md border border-slate-700 w-fit">10/2016 - 08/2019</span>
+            </div>
+            <p class="text-sm font-semibold text-slate-300">Analista de Testes Júnior</p>
+            <ul class="text-xs sm:text-sm text-slate-400 space-y-2 list-disc list-inside leading-relaxed">
+              <li>Testes funcionais de caixa-preta, regressivos e exploratórios para plataformas de e-commerce e varejo.</li>
+              <li>Apoio no desenvolvimento inicial de scripts de automação com Python e Selenium WebDriver.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO CASOS TÉCNICOS & PROJETOS -->
+    <section id="projects" class="space-y-8">
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-wider uppercase">
+          <i data-lucide="folder-git-2" class="w-4 h-4"></i> Arquitetura de QA
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Casos Técnicos & Soluções de Teste</h2>
+        <p class="text-sm text-slate-400">Exemplos reais de engenharia de confiabilidade e validação estruturada.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        
+        <!-- Card 1 -->
+        <div class="p-6 rounded-2xl bg-qa-surface/80 border border-slate-800 flex flex-col justify-between hover:border-cyan-500/40 hover:-translate-y-1 transition-all">
+          <div class="space-y-3">
+            <span class="text-xs font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-0.5 rounded border border-cyan-800/40">Bancário & Filas</span>
+            <h3 class="font-bold text-slate-100 text-base">Validação Assíncrona com IBM MQ & WebSphere</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Homologação de tráfego de mensageria assíncrona para transações financeiras com auditoria de integridade de mensagens e verificação de logs no WebSphere.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800/80 mt-4 flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-400">
+            <span>#IBMMQ</span> <span>#WebSphere</span> <span>#Rest-Assured</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-6 rounded-2xl bg-qa-surface/80 border border-slate-800 flex flex-col justify-between hover:border-cyan-500/40 hover:-translate-y-1 transition-all">
+          <div class="space-y-3">
+            <span class="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-0.5 rounded border border-emerald-800/40">CI/CD & DevOps</span>
+            <h3 class="font-bold text-slate-100 text-base">Esteira Automatizada no Azure DevOps</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Integração de testes regressivos e funcionais com Cypress e Selenium direto na pipeline, impedindo que bugs transacionais subam para homologação e produção.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800/80 mt-4 flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-400">
+            <span>#AzureDevOps</span> <span>#Cypress</span> <span>#QualityGate</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-6 rounded-2xl bg-qa-surface/80 border border-slate-800 flex flex-col justify-between hover:border-cyan-500/40 hover:-translate-y-1 transition-all">
+          <div class="space-y-3">
+            <span class="text-xs font-mono text-purple-400 bg-purple-950/60 px-2.5 py-0.5 rounded border border-purple-800/40">Dados & Batch</span>
+            <h3 class="font-bold text-slate-100 text-base">Auditoria Transacional em DB2 & Control-M</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Disparo e monitoramento de rotinas batch com conferência automatizada de consistência financeira e integridade de saldo em bancos relacionais IBM DB2 e SQL Server.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-800/80 mt-4 flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-400">
+            <span>#ControlM</span> <span>#IBMDB2</span> <span>#SQLServer</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO FORMAÇÃO & CERTIFICAÇÕES -->
+    <section class="p-8 rounded-2xl bg-qa-surface/60 border border-slate-800 space-y-6">
+      <div class="space-y-1">
+        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+          <i data-lucide="graduation-cap" class="w-5 h-5 text-cyan-400"></i>
+          Formação Acadêmica & Especializações
+        </h2>
+        <p class="text-xs text-slate-400">Qualificação contínua e alinhamento com padrões internacionais.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+          <span class="text-[11px] font-mono text-cyan-400">Pós-Graduação Lato Sensu</span>
+          <h4 class="font-bold text-sm text-slate-200 mt-1">Engenharia de Software</h4>
+          <p class="text-xs text-slate-400 mt-1">Ênfase em Qualidade e Teste de Software — Faculdade Anhanguera</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+          <span class="text-[11px] font-mono text-emerald-400">Especialização Executiva</span>
+          <h4 class="font-bold text-sm text-slate-200 mt-1">Engenharia de Qualidade & Automação</h4>
+          <p class="text-xs text-slate-400 mt-1">Automação moderna e Shift-Left — EBAC</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+          <span class="text-[11px] font-mono text-sky-400">Certificação Internacional</span>
+          <h4 class="font-bold text-sm text-slate-200 mt-1">Preparação BSTQB / ISTQB</h4>
+          <p class="text-xs text-slate-400 mt-1">CTFL (Certified Tester Foundation Level)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO CONTATO -->
+    <section id="contact" class="space-y-8">
+      <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-qa-surface to-[#0a1224] border border-cyan-500/20 shadow-2xl relative overflow-hidden">
+        
+        <div class="max-w-2xl space-y-4">
+          <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-wider uppercase">
+            <i data-lucide="message-square" class="w-4 h-4"></i> Conecte-se Comigo
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Pronto para elevar a confiabilidade do seu software?</h2>
+          <p class="text-sm text-slate-400">
+            Estou à disposição para posições sênior, consultoria em automação de testes e novos desafios tecnológicos.
+          </p>
+
+          <!-- Cards de Contato Direto -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
+            
+            <a href="mailto:vtrlslv@icloud.com" class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition-colors group">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-slate-400">E-mail Direto</span>
+                <span class="text-xs font-mono font-semibold text-slate-200">vtrlslv@icloud.com</span>
+              </div>
+            </a>
+
+            <a href="https://wa.me/5521960164040" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 transition-colors group">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-slate-400">WhatsApp / Celular</span>
+                <span class="text-xs font-mono font-semibold text-slate-200">(21) 96016-4040</span>
+              </div>
+            </a>
+
+            <a href="https://linkedin.com/in/vitor-lima-935854131" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 transition-colors group">
+              <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-slate-400">LinkedIn</span>
+                <span class="text-xs font-mono font-semibold text-slate-200">/in/vitor-lima-935854131</span>
+              </div>
+            </a>
+
+            <div class="flex items-center gap-3 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-slate-400">Localização</span>
+                <span class="text-xs font-semibold text-slate-200">Rio de Janeiro - RJ</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 py-8 px-4 text-center text-xs text-slate-500 relative z-10">
+    <p>© 2026 Vitor Lima da Silva. Todos os direitos reservados.</p>
+    <p class="mt-1 font-mono text-[11px] text-slate-600">Construído com foco em alta performance e qualidade de software.</p>
+  </footer>
+
+  <!-- SCRIPT DE INTERATIVIDADE -->
+  <script>
+    // Inicialização dos ícones Lucide
+    lucide.createIcons();
+
+    // Toggle de Tema (Dark / Light)
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      sunIcon.classList.toggle('hidden', isDark);
+      moonIcon.classList.toggle('hidden', !isDark);
+    });
+
+    // Simulação do Console de QA
+    const testCases = [
+      { runner: "[Cypress E2E]", desc: "Validação de jornada de autenticação e transações Web", time: "38ms" },
+      { runner: "[Rest-Assured]", desc: "Contratos RESTful, Schema JSON e retorno 200 OK", time: "25ms" },
+      { runner: "[IBM MQ]", desc: "Consumo e persistência de mensagens em filas assíncronas", time: "49ms" },
+      { runner: "[IBM DB2 / SQL]", desc: "Validação de consistência em tabelas de faturamento", time: "44ms" },
+      { runner: "[Control-M]", desc: "Homologação de trigger de rotina batch com saída 0", time: "18ms" }
+    ];
+
+    function runQASimulation() {
+      const body = document.getElementById('terminalBody');
+      const status = document.getElementById('terminalStatus');
+      const runIcon = document.getElementById('runIcon');
+
+      runIcon.classList.add('animate-spin');
+      body.innerHTML = `<div class="text-cyan-400 animate-pulse font-mono">⚡ Compilando esteira e executando testes Shift-Left...</div>`;
+      status.className = "text-amber-400";
+      status.innerText = "● EXECUTANDO...";
+
+      setTimeout(() => {
+        let html = '';
+        testCases.forEach((tc) => {
+          html += `
+            <div class="flex items-start gap-3 animate-fade-in">
+              <span class="text-emerald-400 font-bold">✔</span>
+              <div class="flex-1">
+                <span class="text-slate-100 font-bold">${tc.runner}</span> ${tc.desc}
+                <span class="text-slate-500 float-right text-[11px]">${tc.time}</span>
+              </div>
+            </div>
+          `;
+        });
+        body.innerHTML = html;
+        status.className = "text-emerald-400";
+        status.innerText = `● ${testCases.length}/${testCases.length} ALL PASSED`;
+        runIcon.classList.remove('animate-spin');
+      }, 700);
+    }
+  </script>
+</body>
+</html>
